@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>  
+    <button type = "text" id="btn" >추가</button>
+    <button type = "text" id="get">가져오기</button>
+    <div id="box"> </div>
+    <script>
+       
+
+
+
+
+
+
+        window.addEventListener('load',function(){
+            gArray = JSON.parse(localStorage.getItem('num'));
+            console.log('load');
+            if(gArray== null){
+                gArray = [];
+            }else{
+                    for(let i=0; i< gArray.length; i++){
+                        const div = document.createElement('div');
+                        const input = document.createElement('input');
+                        document.querySelector('#box').appendChild(div);
+                        div.appendChild(input);
+                    input.value = gArray[i];
+                    }
+                }
+                
+
+        })
+        document
+            .querySelector('#btn')
+            .addEventListener('click', function(){
+            const div = document.createElement('div');
+            const input = document.createElement('input');
+            document.querySelector('#box').appendChild(div);
+           input.type = 'text';
+           div.appendChild(input);
+           
+        })
+       
+
+        let gArray = [];
+        document
+        .querySelector('#get')
+        .addEventListener('click',function(){
+            const arr = document.querySelectorAll('input');
+
+
+
+            if(gArray == null){
+                return;
+            }else{
+                for(let i = 0;i <arr.length;i++){
+                gArray.push(arr[i].value);
+                }
+            console.log(gArray);
+            localStorage.setItem('num',JSON.stringify(gArray));
+            }
+            
+            
+            
+        })
+
+        
+    </script>
+    
+</body>
+</html>
